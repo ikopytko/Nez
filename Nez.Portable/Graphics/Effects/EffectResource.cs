@@ -102,6 +102,13 @@ namespace Nez
 				name = name.Replace(".Framework", ".Framework.Platform");
 #endif
 
+			var shaderType = assembly.GetType("Microsoft.Xna.Framework.Graphics.Shader");
+			var profileProperty = shaderType.GetProperty("Profile");
+			var value = (int)profileProperty.GetValue(null);
+			var extension = value == 1 ? ".dx11.mgfxo" : ".ogl.mgfxo";
+
+			name = name.Replace(".ogl.mgfxo", extension);
+
 			using (var stream = assembly.GetManifestResourceStream(name))
 			{
 				using (var ms = new MemoryStream())
