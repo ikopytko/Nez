@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Nez.Particles;
+using System;
 using System.IO;
 using System.IO.Compression;
 using System.Xml;
 using System.Xml.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Nez.Particles;
 
 namespace Nez.ParticleDesigner
 {
@@ -91,21 +91,21 @@ namespace Nez.ParticleDesigner
 						{
 							stream.CopyTo(mem);
 
-							var bitmap = System.Drawing.Image.FromStream(mem) as System.Drawing.Bitmap;
-							var colors = new Color[bitmap.Width * bitmap.Height];
-
-							for (var x = 0; x < bitmap.Width; x++)
-							{
-								for (var y = 0; y < bitmap.Height; y++)
-								{
-									var drawColor = bitmap.GetPixel(x, y);
-									colors[x + y * bitmap.Width] = new Color(drawColor.R, drawColor.G, drawColor.B, drawColor.A);
-								}
-							}
-
-							var texture = new Texture2D(Core.GraphicsDevice, bitmap.Width, bitmap.Height);
-							texture.SetData(colors);
-							config.Sprite = new Textures.Sprite(texture);
+							//var bitmap = System.Drawing.Image.FromStream(mem) as System.Drawing.Bitmap;
+							//var colors = new Color[bitmap.Width * bitmap.Height];
+							//
+							//for (var x = 0; x < bitmap.Width; x++)
+							//{
+							//	for (var y = 0; y < bitmap.Height; y++)
+							//	{
+							//		var drawColor = bitmap.GetPixel(x, y);
+							//		colors[x + y * bitmap.Width] = new Color(drawColor.R, drawColor.G, drawColor.B, drawColor.A);
+							//	}
+							//}
+							//
+							//var texture = new Texture2D(Core.GraphicsDevice, bitmap.Width, bitmap.Height);
+							//texture.SetData(colors);
+							//config.Sprite = new Textures.Sprite(texture);
 						}
 					}
 				}
